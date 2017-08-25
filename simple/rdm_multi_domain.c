@@ -369,9 +369,15 @@ int main(int argc, char **argv)
 
 	ret = run_test();
 
-	if (domain_res_array)
+	if (domain_res_array) {
+		printf("START free_domain_res...");
 		free_domain_res();
+		printf("DONE\n");
+	}
+	printf("START ft_free_res...");
 	ft_free_res();
+	printf("DONE\n");
 
+	printf("EXITING... ret = %d\n", ret);
 	return ft_exit_code(ret);
 }

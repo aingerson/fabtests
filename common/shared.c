@@ -1378,6 +1378,7 @@ static int ft_inject_progress(uint64_t total)
 
 ssize_t ft_post_tx(struct fid_ep *ep, fi_addr_t fi_addr, size_t size, struct fi_context* ctx)
 {
+	printf("____POST TX_____\n");
 	if (hints->caps & FI_TAGGED) {
 		FT_POST(fi_tsend, ft_get_tx_comp, tx_seq, "transmit", ep,
 				tx_buf, size + ft_tx_prefix_size(), fi_mr_desc(mr),
@@ -1575,6 +1576,7 @@ int check_compare_atomic_op(struct fid_ep *endpoint, enum fi_op op,
 
 ssize_t ft_post_rx(struct fid_ep *ep, size_t size, struct fi_context* ctx)
 {
+	printf("____POST RX_____\n");
 	if (hints->caps & FI_TAGGED) {
 		FT_POST(fi_trecv, ft_get_rx_comp, rx_seq, "receive", ep, rx_buf,
 				MAX(size, FT_MAX_CTRL_MSG) + ft_rx_prefix_size(),

@@ -115,6 +115,7 @@ static int do_transfers(void)
 			ft_fill_buf(send_bufs[i], opts.transfer_size);
 
 		tx_buf = send_bufs[i];
+		printf("sending to %d\n", (int) remote_addr[i]);
 		ret = ft_post_tx(eps[i], remote_addr[i], opts.transfer_size, &send_ctx[i]);
 		if (ret)
 			return ret;
@@ -315,5 +316,6 @@ int main(int argc, char **argv)
 
 	free_ep_res();
 	ft_free_res();
+
 	return ft_exit_code(ret);
 }
